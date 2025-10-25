@@ -30,7 +30,7 @@ export default {
     {
       path: '',
       name: 'dw-task-chain-list',
-      component: components['dw-task-chain-list'],
+      component: components['dw-task-chain-dw-task-chain-list'],
       meta: {
         title: '数仓任务耗时链路分析',
         activeMenu: 'dw-task-chain',
