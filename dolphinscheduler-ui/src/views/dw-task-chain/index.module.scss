@@ -1,0 +1,236 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.searchSection {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+.searchHeader {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+.searchForm {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+.formGroup {
+  flex: 1;
+}
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+.formControl {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+.formControl:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+.btnPrimary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: #3498db;
+  color: white;
+}
+.btnPrimary:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+}
+.resultsSection {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.resultsHeader {
+  padding: 20px 25px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+.resultsTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+.resultsSubtitle {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+.chartContainer {
+  position: relative;
+  min-height: 600px;
+  max-height: 800px;
+  height: 700px;
+  padding: 25px;
+  overflow: auto;
+  background: #fafbfc;
+  cursor: grab;
+}
+.chartContainer:active {
+  cursor: grabbing;
+}
+.chartSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5000px;
+  height: 4000px;
+  pointer-events: none;
+  z-index: 1;
+}
+.taskNode {
+  position: absolute;
+  background: white;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 12px 15px;
+  width: 300px;
+  cursor: move;
+  transition: all 0.3s;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.taskNode:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.taskNode.target {
+  border-color: #e74c3c;
+  background: #fff5f5;
+}
+.taskNode.upstream {
+  border-color: #27ae60;
+  background: #f5fff5;
+}
+.nodeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.nodeName {
+  font-weight: 600;
+  font-size: 13px;
+  color: #2c3e50;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  margin-right: 10px;
+}
+.nodeDuration {
+  font-weight: 700;
+  font-size: 14px;
+  color: #e74c3c;
+  flex-shrink: 0;
+}
+.nodeStartTime,
+.nodeEndTime {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #95a5a6;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  gap: 10px;
+}
+.nodeStatus {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-success {
+  background: #d4edda;
+  color: #155724;
+}
+.status-running {
+  background: #fff3cd;
+  color: #856404;
+}
+.status-failed {
+  background: #f8d7da;
+  color: #721c24;
+}
+.connectionLine {
+  fill: none;
+  stroke: #95a5a6 !important;
+  stroke-width: 1.5 !important;
+  opacity: 1 !important;
+}
+.emptyState {
+  text-align: center;
+  padding: 40px;
+  color: #7f8c8d;
+}
+.emptyIcon {
+  font-size: 42px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+.errorState {
+  background: #fff5f5;
+  border: 1px solid #f8d7da;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 30px;
+}
+.errorState .emptyIcon {
+  color: #e74c3c;
+}

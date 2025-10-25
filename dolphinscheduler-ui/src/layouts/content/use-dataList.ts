@@ -314,6 +314,13 @@ export function useDataList() {
                   icon: renderIcon(SafetyOutlined)
                 }
               ]
+      },
+      {
+        label: () =>
+          h(NEllipsis, null, { default: () => t('menu.dw_task_chain') }),
+        key: 'dw-task-chain',
+        icon: renderIcon(DatabaseOutlined),
+        children: []
       }
     ]
   }

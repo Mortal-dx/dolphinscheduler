@@ -24,7 +24,7 @@ import datasourcePage from './modules/datasource'
 import monitorPage from './modules/monitor'
 import securityPage from './modules/security'
 import dataQualityPage from './modules/data-quality'
-
+import dwTaskChainPage from './modules/dw-task-chain'
 // All TSX files under the views folder automatically generate mapping relationship
 const modules = import.meta.glob('/src/views/**/**.tsx')
 const components: { [key: string]: Component } = utils.mapping(modules)
@@ -74,6 +74,7 @@ const basePage: RouteRecordRaw[] = [
   datasourcePage,
   monitorPage,
   securityPage,
+  dwTaskChainPage,
   dataQualityPage
 ]
 
